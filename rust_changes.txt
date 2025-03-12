@@ -1,0 +1,246 @@
+changes steps:- 
+----------------------------
+
+1. Local File Names..
+
+2. code names in VS Code
+
+3. Hash values
+
+4. Github Link
+
+5. Address (erd1)  --> bash64-python repo --> bech32_to_list_of_bytes.py
+
+6. Versions change
+
+7. Authors
+
+------------------------------------------
+
+esdt -> dcdt, Esdt -> Dcdt, ESDT -> DCDT
+
+egld -> moa, Egld -> Moa, EGLD -> MOA, eGLD -> MOA
+
+erdrs -> drtrs, Erdrs -> Drtrs, ERDRS -> DRTRS  (dont change serde)
+
+erdpy -> drtpy, Erdpy -> Drtpy, ERDPY -> DRTPY
+
+erdjs -> drtjs, Erdjs -> Drtjs, ERDJS -> DRTJS
+
+erdSys -> drtSys, erd_ -> drt_
+
+---->    erd -> drt, Erd -> Drt, ERD -> DRT
+
+elrond -> numbat, Elrond -> Numbat, ELROND -> NUMBAT
+
+mandos -> denali, Mandos -> Denali, MANDOS -> DENALI
+
+arwen -> andes, Arwen -> Andes, ARWEN -> ANDES
+
+multiversx -> dharitri, Multiversx -> Dharitri, MULTIVERSX -> DHARITRI, MultiversX -> Dharitri
+
+ESDigitalToken -> DCDigitalToken
+
+EsdTokenPayment -> DcdTokenPayment
+
+mxvm --> drtvm, Mxvm --> Drtvm, MXVM --> DRTVM
+
+mxpy --> drtpy, Mxpy --> Drtpy, MXPY --> DRTPY
+
+mxsc --> drtsc, Mxsc --> Drtsc, MXSC --> DRTSC
+
+multiversx_chain_vm_executor --> drt_vm_executor
+
+multiversx-chain-vm-executor --> drt-vm-executor
+
+LKMEX - LKDRT
+LKFARM - LKFARM
+
+"E" + "L" + "R" + "O" + "N" + "D" -> "N" + "U" + "M" + "B" + "A" + "T"
+
+(erd1... should be converted and changed) 
+
+----------------------------------------------------
+
+hash values:- 
+
+#    "esdt" : "65736474"   "dcdt"  : "64636474"
+#    "Esdt" : "45736474"   "Dcdt"  : "44636474"
+#    "ESDT" : "45534454"   "DCDT"  : "44434454"
+
+"egld" : "65676c64"   "rewa" : "72657761" 
+"Egld" : "45676c64"   "Rewa" : "52657761"  
+"EGLD" : "45474c44"   "REWA" : "52455741"
+ 
+
+#    "erd"  : "657264"    "drt"  : "647274"
+#    "Erd"  : "457264"    "Drt"  : "447274"
+#    "ERD"  : "455244"    "DRT"  : "445254"
+
+#    "elrond": "656c726f6e64"    "numbat": "6e756d626174"
+#    "Elrond": "456c726f6e64"    "Numbat": "4e756d626174"
+#    "ELROND": "454c524f4e44"    "NUMBAT": "4e554d424154"  
+
+#    "mandos" : "6d616e646f73"    "denali" : "64656e616c69"
+#    "Mandos" : "4d616e646f73"    "Denali" : "44656e616c69"
+#    "MANDOS" : "4d414e444f53"    "DENALI" : "44454e414c49"
+
+#    "arwen": "617277656e"   "andes": "616e646573"  
+#    "Arwen": "417277656e"   "Andes": "416e646573" 
+#    "ARWEN": "415257454e"   "ANDES": "414e444553"   
+
+#    "multiversx" : "6d756c74697665727378",    "dharitri"   : "6468617269747269",
+#    "Multiversx" : "4d756c74697665727378",    "Dharitri"   : "4468617269747269", 
+#    "MULTIVERSX" : "4d554c54495645525358",    "DHARITRI"   : "4448415249545249", 
+#    "MultiversX" : "4d756c74697665727358",    "Dharitri"   : "4468617269747269", 
+
+"erdrs"  : "6572647273"    "drtrs"  : "6472747273"
+"Erdrs"  : "4572647273"    "Drtrs"  : "4472747273"
+"ERDRS"  : "4552445253"    "DRTRS"  : "4452545253"
+
+"erdpy"  : "6572647079"    "drtpy"  : "6472747079"
+"Erdpy"  : "4572647079"    "Drtpy"  : "4472747079"
+"ERDPY"  : "4552445059"    "DRTPY"  : "4452545059"
+
+"erdjs"  : "6572646a73"    "drtjs"  : "6472746a73"
+"Erdjs"  : "4572646a73"    "Drtjs"  : "4472746a73"
+"ERDJS"  : "4552444a53"    "DRTJS"  : "4452544a53"
+
+"erdSys" : "657264537973"  "drtSys" : "647274537973"
+
+
+--------------------------------------------------------------------------------------
+
+authors = ["xfactor@toml <xfactor.toml@gmail.com>", "Sumanth <saisumanthvadla@gmail.com>"]
+
+repository = "https://github.com/multiversx/mx-sdk-rs"  -->  repository = "https://github.com/DharitriOne/drt-sdk-rs"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# String to Hex Mappings
+
+## Domain & Brand Names
+1. `multiversx.com` → `dharitri.org`
+   - From: `6D756C746976657273782E636F6D`
+   - To:   `646861726974726923636F6D`
+
+2. `Elrond` → `Numbat`
+   - From: `456C726F6E64`
+   - To:   `4E756D626174`
+
+3. `Multiversx` → `Dharitri`
+   - From: `4D756C746976657273780`
+   - To:   `4468617269747269`
+
+4. `Arwen` → `Andes`
+   - From: `417277656E`
+   - To:   `416E646573`
+
+5. `Mandos` → `Denali`
+   - From: `4D616E646F73`
+   - To:   `44656E616C69`
+
+## Token Standards & Names
+6. `ESDT` → `DCDT`
+   - From: `45534454`
+   - To:   `44434454`
+
+7. `ESDigitalToken` → `DCDigitalToken`
+   - From: `4553446967697461746F6B656E`
+   - To:   `4443446967697461746F6B656E`
+
+8. `erd` → `drt`
+   - From: `657264`
+   - To:   `647274`
+
+9. `EGLD` → `REWA`
+   - From: `45474C44`
+   - To:   `52455741`
+
+10. `eGLD` → `REWA`
+    - From: `65474C44`
+    - To:   `52455741`
+
+## Tools & Components
+11. `mxpy` → `drtpy`
+    - From: `6D787079`
+    - To:   `6472747079`
+
+12. `CGLD` → `CMOA`
+    - From: `43474C44`
+    - To:   `434D4F41`
+
+13. `MXVM` → `DRTVM`
+    - From: `4D58564D`
+    - To:   `445254564D`
+
+14. `MXSC` → `DRTSC`
+    - From: `4D585343`
+    - To:   `445254534`
+
+15. `multiversx_chain_vm_executor` → `dharitri_chain_vm_executor`
+    - From: `6D756C746976657273785F636861696E5F766D5F65786563746F72`
+    - To:   `6468617269747269_636861696E5F766D5F65786563746F72`
+
+## Token & Protocol Names
+16. `LKMEX` → `LKMOA`
+    - From: `4C4B4D4558`
+    - To:   `4C4B4D4F41`
+
+17. `LKFARM` → `LKFARM`
+    - From: `4C4B4641524D`
+    - To:   `4C4B4641524D`
+
+18. `MEX` → `MOA`
+    - From: `4D4558`
+    - To:   `4D4F41`
+
+19. `mx` → `drt`
+    - From: `6D78`
+    - To:   `647274`
+
+20. `multiversx-wrewa-swap-sc` → `dharitri-sc-wrewa-swap`
+    - From: `6D756C746976657273782D77726577612D737761702D7363`
+    - To:   `646861726974726923736323777265776123737761702D7363`
+
+21. `mxVirtualMachine` → `drtVirtualMachine`
+    - From: `6D7856697274756173684D616368696E65`
+    - To:   `6472745669727475616C4D616368696E65`
+
+22. `esd_light` → `dcd_light`
+    - From: `6573645F6C69676874`
+    - To:   `6463645F6C69676874`
+
+## Usage Notes
+
+1. When using these hex values in search/replace:
+   - Ensure case sensitivity matches
+   - Account for word boundaries
+   - Consider partial matches
+
+2. Common Patterns:
+   - `mx` → `drt` prefix changes
+   - `ESDT` → `DCDT` token standard changes
+   - Domain name changes
+
+3. Special Considerations:
+   - Some strings appear as substrings of others
+   - Order replacements from longest to shortest
+   - Watch for case sensitivity
+
+
+ drt1yvesqqqqqqqqqqqqqqqqqqqqyvesqqqqqqqqqqqqqqqqqqqzlllsahl0pc
