@@ -1,18 +1,21 @@
 #!/bin/bash
 
+
 # Find all directories named "wasm" and execute commands inside them
-find . -name "wasm" -type d | while read -r dir; do
-    
+find . -name "wasm*" -type d | while read -r dir; do
     echo "Entering directory: $dir"
     cd "$dir" || exit 1  # Exit if changing directory fails
-    # # Set Rust nightly toolchain
-    rustup override set nightly
-    
+    mkdir -p ../output
     # Add WebAssembly target for Rust
     rustup target add wasm32-unknown-unknown
-    
-    # Build the project for WebAssembly in release mode
+
+    # Build the project in release mode
     cargo build --target wasm32-unknown-unknown --release
+
+    # Find and copy all .wasm files to ../output
+    find ./target/wasm32-unknown-unknown/release -name "*.wasm" -exec cp {} ../output/ \;
+
+    echo "Copied .wasm files to ../output"
 
     # Return to the previous directory
     cd - > /dev/null || exit 1

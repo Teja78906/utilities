@@ -1,13 +1,17 @@
+#!/usr/bin/env python3
 import os
 import re
-import mimetypes
-from pathlib import Path
+import subprocess
+import sys
 
-# Define valid file extensions
-VALID_EXTENSIONS = {".json", ".yml", ".sh", ".gitignore", ".toml"}
+# Ensure the script stops on errors (Python's equivalent of set -e)
+def check_error(exit_code, message):
+    if exit_code != 0:
+        print(f"Error: {message}")
+        sys.exit(exit_code)
 
 # Define substitutions
-SUBSTITUTIONS = [
+substitutions = [
     (r"github.com/multiversx", r"github.com/TerraDharitri"),
     (r"github.com/ElrondNetwork", r"github.com/TerraDharitri"),
     (r"multiversx.com", r"dharitri.org"),
@@ -56,8 +60,6 @@ SUBSTITUTIONS = [
     (r"mxsc", r"drtsc"),
     (r"Mxsc", r"Drtsc"),
     (r"MXSC", r"DRTSC"),
-    (r"multiversx_chain_vm_executor", r"dharitri_vm_executor"),
-    (r"multiversx-chain-vm-executor", r"dharitri-vm-executor"),
     (r"LKMEX", r"LKMOA"),
     (r"lkmex", r"lkmoa"),
     (r"LKmex", r"LKmoa"),
@@ -92,29 +94,67 @@ SUBSTITUTIONS = [
     (r"657264537973", r"647274537973"),
 ]
 
-def is_valid_file(file_path: Path) -> bool:
-    """Check if a file is valid for processing."""
-    if not file_path.is_file():
+# Function to determine if a file is readable and has the correct extension
+def is_valid_file(file_path):
+    if not os.path.isfile(file_path):
         return False
-    mime_type, _ = mimetypes.guess_type(file_path)
-    return mime_type and mime_type.startswith("text") or file_path.suffix in VALID_EXTENSIONS
-
-def process_file(file_path: Path):
+    
+    # Check if file has text content using 'file' command
     try:
-        with file_path.open("r", encoding="utf-8") as f:
-            content = f.read()
-        for pattern, replacement in SUBSTITUTIONS:
-            content = re.sub(pattern, replacement, content)
-        with file_path.open("w", encoding="utf-8") as f:
-            f.write(content)
-    except UnicodeDecodeError:
-        print(f"Skipped (binary file): {file_path}")
+        result = subprocess.run(['file', file_path], capture_output=True, text=True)
+        if 'text' in result.stdout.lower():
+            return True
+    except (subprocess.SubprocessError, FileNotFoundError):
+        # If 'file' command fails, check by extension
+        pass
+    
+    # Check extensions
+    valid_extensions = ['.json', '.yml', '.pem', '.sh', '.gitignore', '.toml']
+    for ext in valid_extensions:
+        if file_path.endswith(ext):
+            return True
+    
+    return False
 
-def main():
-    for file in Path(".").rglob("*"):
-        if is_valid_file(file):
-            print(f"processing file: {file}")
-            process_file(file)
+# Function to apply substitutions to a file
+def apply_substitutions(file_path):
+    try:
+        # Read the file content
+        with open(file_path, 'r', errors='ignore') as file:
+            content = file.read()
+        
+        # Apply all substitutions
+        modified_content = content
+        for search, replace in substitutions:
+            modified_content = modified_content.replace(search, replace)
+        
+        # Write back only if changes were made
+        if modified_content != content:
+            with open(file_path, 'w') as file:
+                file.write(modified_content)
+        
+        print(f"Processed: {file_path}")
+        return True
+    except Exception as e:
+        print(f"Failed to process {file_path}: {e}")
+        return False
+
+# Function to process files recursively, including hidden files and directories
+def process_files(path):
+    try:
+        for root, dirs, files in os.walk(path):
+            for file in files:
+                file_path = os.path.join(root, file)
+                if is_valid_file(file_path):
+                    apply_substitutions(file_path)
+                else:
+                    print(f"Skipped: {file_path} (not a valid file for processing)")
+    except Exception as e:
+        print(f"Error processing directory {path}: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
-    main()
+    # Start processing from the current directory
+    current_dir = os.getcwd()
+    process_files(current_dir)
+    print("Naming changes completed successfully!")
